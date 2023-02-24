@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Create a rust backend",
+        "description": "I should create a rust backend with actix-web",
+        "is_completed": false,
+        "created_at": "2023-02-24T00:20:25.981Z",
+        "updated_at": "2023-02-24T00:20:25.981Z"
+    },
+    {
+        "title": "Create a rust frontend",
+        "description": "I should create a rust frontend with leptos",
+        "is_completed": false,
+        "created_at": "2023-02-24T00:20:25.981Z",
+        "updated_at": "2023-02-24T00:20:25.981Z"
+    }
+]
