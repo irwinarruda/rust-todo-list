@@ -3,7 +3,7 @@ mod entities;
 mod repositories;
 
 use actix_web::{App, HttpServer};
-use controllers::todo::*;
+use controllers::todo::get_todos;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
