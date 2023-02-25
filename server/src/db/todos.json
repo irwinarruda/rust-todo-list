@@ -1,5 +1,6 @@
 [
     {
+        "id": "040c8a7a-858a-41a0-b55f-55f6e38bb647",
         "title": "Create a rust backend",
         "description": "I should create a rust backend with actix-web",
         "is_completed": false,
@@ -7,6 +8,7 @@
         "updated_at": "2023-02-24T00:20:25.981Z"
     },
     {
+        "id": "aedaa91d-39cb-40c0-aeb7-7762713fcbb0",
         "title": "Create a rust frontend",
         "description": "I should create a rust frontend with leptos",
         "is_completed": false,
