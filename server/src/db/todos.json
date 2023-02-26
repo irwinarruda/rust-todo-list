@@ -1,18 +1,42 @@
 [
-    {
-        "id": "040c8a7a-858a-41a0-b55f-55f6e38bb647",
-        "title": "Create a rust backend",
-        "description": "I should create a rust backend with actix-web",
-        "is_completed": false,
-        "created_at": "2023-02-24T00:20:25.981Z",
-        "updated_at": "2023-02-24T00:20:25.981Z"
-    },
-    {
-        "id": "aedaa91d-39cb-40c0-aeb7-7762713fcbb0",
-        "title": "Create a rust frontend",
-        "description": "I should create a rust frontend with leptos",
-        "is_completed": false,
-        "created_at": "2023-02-24T00:20:25.981Z",
-        "updated_at": "2023-02-24T00:20:25.981Z"
-    }
+  {
+    "id": "040c8a7a-858a-41a0-b55f-55f6e38bb647",
+    "title": "Create a rust backend",
+    "description": "I should create a rust backend with actix-web",
+    "deadline": null,
+    "is_completed": false,
+    "is_deleted": false,
+    "created_at": "2023-02-24T00:20:25.981Z",
+    "updated_at": "2023-02-24T00:20:25.981Z"
+  },
+  {
+    "id": "aedaa91d-39cb-40c0-aeb7-7762713fcbb0",
+    "title": "Create a rust frontend",
+    "description": "I should create a rust frontend with leptos",
+    "deadline": null,
+    "is_completed": false,
+    "is_deleted": false,
+    "created_at": "2023-02-24T00:20:25.981Z",
+    "updated_at": "2023-02-24T00:20:25.981Z"
+  },
+  {
+    "id": "5825c5c9-023c-43f2-8ea8-da068d45ddd6",
+    "title": "Newly created todo",
+    "description": "Todo to test if the endpoint is correct",
+    "deadline": null,
+    "is_completed": true,
+    "is_deleted": false,
+    "created_at": "2023-02-25T23:54:43.107330500Z",
+    "updated_at": "2023-02-25T23:54:43.107331100Z"
+  },
+  {
+    "id": "83ecdd07-9b83-4016-87b7-4aba4a89c8d0",
+    "title": "Test pretty json",
+    "description": "Changed description",
+    "deadline": null,
+    "is_completed": false,
+    "is_deleted": false,
+    "created_at": "2023-02-26T03:01:02.412968600Z",
+    "updated_at": "2023-02-26T06:04:20.584657Z"
+  }
 ]

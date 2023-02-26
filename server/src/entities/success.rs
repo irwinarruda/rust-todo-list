@@ -11,6 +11,9 @@ impl AppSuccess {
             .content_type(ContentType::json())
             .body(AppSuccess::to_response_body(data));
     }
+    pub fn no_content() -> HttpResponse {
+        return HttpResponse::NoContent().finish();
+    }
     pub fn status<T: Serialize>(status: i32, data: &T) -> HttpResponse {
         return AppSuccess::to_response_builder(status)
             .content_type(ContentType::json())
