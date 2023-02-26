@@ -1,5 +1,5 @@
 [package]
-name = "rust-todo-list-server"
+name = "rust_todo_list_server"
 version = "0.1.0"
 edition = "2021"
 

@@ -1,0 +1,16 @@
+{
+  "name": "rust_todo_list_client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tailwindcss -i ./src/styles/input.css -o ./src/styles/output.css -w"
+  },
+  "keywords": [],
+  "author": "irwinarruda",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
+  }
+}
