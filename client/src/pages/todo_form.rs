@@ -1,5 +1,4 @@
 use leptos::*;
-use leptos_meta::*;
 
 use crate::components::{
     checkbox::{Checkbox, CheckboxProps},
@@ -8,8 +7,6 @@ use crate::components::{
 
 #[component]
 pub fn TodoForm(cx: Scope) -> impl IntoView {
-    provide_meta_context(cx);
-
     let (title, set_title) = create_signal(cx, "".to_string());
     let (description, set_description) = create_signal(cx, "".to_string());
     let (deadline, set_deadline) = create_signal(cx, "".to_string());
@@ -31,7 +28,6 @@ pub fn TodoForm(cx: Scope) -> impl IntoView {
                 <TextField
                     label="Title"
                     name="title"
-                    variant="text"
                     placeholder="Do something..."
                     value=title
                     set_value=set_title

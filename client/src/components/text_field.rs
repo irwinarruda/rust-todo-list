@@ -1,18 +1,16 @@
 use leptos::*;
-use leptos_meta::*;
 
 #[component]
 pub fn TextField(
     cx: Scope,
     name: &'static str,
     label: &'static str,
-    placeholder: &'static str,
-    variant: &'static str,
+    #[prop(default = "")] placeholder: &'static str,
+    #[prop(default = "text")] variant: &'static str,
     value: ReadSignal<String>,
     set_value: WriteSignal<String>,
 ) -> impl IntoView {
-    provide_meta_context(cx);
-    let on_click_handler = move |event| {
+    let on_change = move |event| {
         set_value(event_target_value(&event));
     };
 
@@ -28,8 +26,8 @@ pub fn TextField(
                     id=String::from(name)
                     name=String::from(name)
                     placeholder=String::from(placeholder)
-                    value=value
-                    on:input=on_click_handler
+                    prop:value={value}
+                    on:input=on_change
                     type="textarea"
                 /></>},
                 val => view!{cx,<><input
@@ -37,8 +35,8 @@ pub fn TextField(
                     id=String::from(name)
                     name=String::from(name)
                     placeholder=String::from(placeholder)
-                    value=value
-                    on:input=on_click_handler
+                    prop:value={value}
+                    on:input=on_change
                     type=val
                 /></>}
             }}

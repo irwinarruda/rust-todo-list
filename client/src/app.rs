@@ -18,7 +18,7 @@ pub fn App(cx: Scope) -> impl IntoView {
                     path=""
                     view=move |cx| view! {
                         cx,
-                        <Todo />
+                        <TodoPage />
                     }
                 />
             </Routes>
