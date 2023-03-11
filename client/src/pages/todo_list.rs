@@ -1,31 +1,35 @@
-use crate::entities::todo::Todo;
+use crate::{
+    entities::todo::Todo,
+    utils::{are_similar::are_similar, format_bool::format_bool, format_date::format_date},
+};
 use leptos::*;
 
-pub fn are_similar(str1: &String, str2: &String) -> bool {
-    return str1
-        .to_lowercase()
-        .replace(" ", "")
-        .contains(&str2.to_lowercase().replace(" ", ""));
-}
-
 #[component]
-pub fn TodoList(cx: Scope, todos: ReadSignal<Vec<Todo>>) -> impl IntoView {
+pub fn TodoList(
+    cx: Scope,
+    todos: ReadSignal<Vec<Todo>>,
+    delete_todo: Action<String, ()>,
+) -> impl IntoView {
     let (text_search, set_text_search) = create_signal(cx, "".to_string());
-    let filtered_todos: Memo<Vec<_>> = create_memo(cx, move |_| {
+    let filtered_todos: Memo<Vec<Todo>> = create_memo(cx, move |_| {
         return todos.with(move |todos| {
             return todos
                 .iter()
-                .filter(|todo| {
+                .filter(move |todo| {
                     text_search() == ""
                         || are_similar(&todo.title, &text_search())
                         || are_similar(&todo.description, &text_search())
                 })
                 .cloned()
-                .collect();
+                .collect::<Vec<Todo>>();
         });
     });
     let on_change = move |event| {
         set_text_search(event_target_value(&event));
+    };
+    let on_delete = move |id: &String| {
+        let id = id.clone();
+        delete_todo.dispatch(id);
     };
     return view! {
         cx,
@@ -39,27 +43,35 @@ pub fn TodoList(cx: Scope, todos: ReadSignal<Vec<Todo>>) -> impl IntoView {
                 <p class="flex-1 font-3xl font-semibold">"Description"</p>
                 <p class="flex-1 font-3xl font-semibold">"Deadline"</p>
                 <p class="flex-1 font-3xl font-semibold">"Is Completed"</p>
+                <p class="flex-1 font-3xl font-semibold">"Ações"</p>
             </div>
-            <For
-                each={filtered_todos}
-                key={|todo| todo.id.clone()}
-                view={move |cx, todo| { view!{ cx,
-                    <div class="flex align-top w-full mt-2 p-4 shadow border">
-                        <div class="flex-1">
-                            <span>{todo.title}</span>
+            <div>
+                <For
+                    each={filtered_todos}
+                    key={|todo| todo.id.clone()}
+                    view={move |cx, todo| { view!{ cx,
+                        <div class="flex align-top w-full mt-2 p-4 shadow border">
+                            <div class="flex-1">
+                                <span>{todo.title}</span>
+                            </div>
+                            <div class="flex-1">
+                                <span>{todo.description}</span>
+                            </div>
+                            <div class="flex-1">
+                                <span>{match todo.deadline { Some(d) => format_date(&d), None => "---".to_string() }}</span>
+                            </div>
+                            <div class="flex-1">
+                                <span>{format_bool(todo.is_completed)}</span>
+                            </div>
+                            <button class="flex items-center justify-center w-9 h-9 bg-red-500 text-white rounded-full hover:bg-red-700" on:click={move |_| on_delete(&todo.id)}>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                </svg>
+                            </button>
                         </div>
-                        <div class="flex-1">
-                            <span>{todo.description}</span>
-                        </div>
-                        <div class="flex-1">
-                            <span>"Qualquer"</span>
-                        </div>
-                        <div class="flex-1">
-                            <span>{todo.is_completed}</span>
-                        </div>
-                    </div>
-                }}}
-            />
+                    }}}
+                />
+            </div>
         </div>
     };
 }

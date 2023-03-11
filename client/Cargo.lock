@@ -1784,6 +1784,7 @@ dependencies = [
  "log",
  "reqwasm",
  "serde",
+ "serde_json",
  "simple_logger",
  "wasm-bindgen",
  "wasm-bindgen-test",

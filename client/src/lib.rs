@@ -2,6 +2,8 @@ pub mod app;
 pub mod components;
 pub mod entities;
 pub mod pages;
+pub mod services;
+pub mod utils;
 use cfg_if::cfg_if;
 
 cfg_if! {

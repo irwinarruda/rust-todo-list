@@ -1,12 +1,16 @@
+use chrono::{DateTime, Utc};
 use leptos::*;
 
-use crate::components::{
-    checkbox::{Checkbox, CheckboxProps},
-    text_field::{TextField, TextFieldProps},
+use crate::{
+    components::{
+        checkbox::{Checkbox, CheckboxProps},
+        text_field::{TextField, TextFieldProps},
+    },
+    services::todo::CreateTodoDTO,
 };
 
 #[component]
-pub fn TodoForm(cx: Scope) -> impl IntoView {
+pub fn TodoForm(cx: Scope, create_todo: Action<CreateTodoDTO, ()>) -> impl IntoView {
     let (title, set_title) = create_signal(cx, "".to_string());
     let (description, set_description) = create_signal(cx, "".to_string());
     let (deadline, set_deadline) = create_signal(cx, "".to_string());
@@ -14,10 +18,23 @@ pub fn TodoForm(cx: Scope) -> impl IntoView {
 
     let on_submit = move |event: ev::SubmitEvent| {
         event.prevent_default();
-        log!("{}", title());
-        log!("{}", description());
-        log!("{}", deadline());
-        log!("{}", is_completed());
+        let todo_item: CreateTodoDTO;
+        if let Ok(date_time_deadline) = format!("{}:00Z", deadline()).parse::<DateTime<Utc>>() {
+            todo_item = CreateTodoDTO {
+                title: title(),
+                description: description(),
+                deadline: Some(date_time_deadline),
+                is_completed: is_completed(),
+            }
+        } else {
+            todo_item = CreateTodoDTO {
+                title: title(),
+                description: description(),
+                deadline: None,
+                is_completed: is_completed(),
+            }
+        }
+        create_todo.dispatch(todo_item);
     };
 
     return view! {
