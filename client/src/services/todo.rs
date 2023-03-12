@@ -16,6 +16,14 @@ pub struct CreateTodoDTO {
     pub deadline: Option<DateTime<Utc>>,
     pub is_completed: bool,
 }
+
+#[derive(Serialize, Debug, Clone)]
+pub struct EditTodoDTO {
+    pub id: String,
+    pub description: String,
+    pub is_completed: bool,
+}
+
 pub struct TodoService {}
 
 impl TodoService {
@@ -28,6 +36,15 @@ impl TodoService {
     pub async fn create_todo(todo: &CreateTodoDTO) -> Result<()> {
         let todo = to_string(&todo)?;
         Request::post("http://localhost:8080/todos")
+            .header("Content-Type", "application/json")
+            .body(todo)
+            .send()
+            .await?;
+        return Ok(());
+    }
+    pub async fn edit_todo(todo: &EditTodoDTO) -> Result<()> {
+        let todo = to_string(&todo)?;
+        Request::put("http://localhost:8080/todos")
             .header("Content-Type", "application/json")
             .body(todo)
             .send()

@@ -7,6 +7,7 @@ pub fn TextField(
     label: &'static str,
     #[prop(default = "")] placeholder: &'static str,
     #[prop(default = "text")] variant: &'static str,
+    #[prop(default = false)] is_disabled: bool,
     value: ReadSignal<String>,
     set_value: WriteSignal<String>,
 ) -> impl IntoView {
@@ -29,6 +30,7 @@ pub fn TextField(
                     prop:value={value}
                     on:input=on_change
                     type="textarea"
+                    prop:disabled={is_disabled}
                 /></>},
                 val => view!{cx,<><input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-cyan-500"
@@ -38,6 +40,7 @@ pub fn TextField(
                     prop:value={value}
                     on:input=on_change
                     type=val
+                    prop:disabled={is_disabled}
                 /></>}
             }}
         </div>

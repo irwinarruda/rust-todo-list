@@ -24,19 +24,19 @@
     "title": "Newly created todo",
     "description": "Todo to test if the endpoint is correct",
     "deadline": null,
-    "is_completed": true,
+    "is_completed": false,
     "is_deleted": false,
     "created_at": "2023-02-25T23:54:43.107330500Z",
-    "updated_at": "2023-02-25T23:54:43.107331100Z"
+    "updated_at": "2023-03-12T03:03:43.223383700Z"
   },
   {
-    "id": "9baee7db-42db-4eca-a02e-59755d6a0a83",
-    "title": "3° created todo",
-    "description": "Created by the client form",
-    "deadline": "2023-03-23T23:03:00Z",
-    "is_completed": false,
-    "is_deleted": true,
-    "created_at": "2023-03-11T02:04:11.499501600Z",
-    "updated_at": "2023-03-11T02:04:11.499502400Z"
+    "id": "1d86dae4-e9cb-4251-a479-d4f9b7d15188",
+    "title": "Todo with deadline",
+    "description": "Created todo with new deadline here.",
+    "deadline": "2023-03-10T22:59:00Z",
+    "is_completed": true,
+    "is_deleted": false,
+    "created_at": "2023-03-12T01:59:18.664756200Z",
+    "updated_at": "2023-03-12T01:59:18.664757Z"
   }
 ]
