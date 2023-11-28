@@ -1,6 +1,6 @@
 # Rust Todo List
 
-![image](./assets/app.png)
+![image](./assets/app_pages.png)
 
 ## Introduction
 
